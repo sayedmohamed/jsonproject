@@ -1,0 +1,13 @@
+
+
+This is a sample project to show how AJAX works and to be used in a django project.
+
+It is a 'fixed' copy from Felipe 'chronos' Prenholato  at http://chronosbox.org/blog/jsonresponse-in-django/comment-page-1?lang=en.
+
+I've modified the project to work with django 1.25+ and it's CSRF protection on the ajax POST.  This was done by allowing the view
+json_get_city to be exempt from the CSRF in djanog.  This of course is NOT the production way to handle CSRF in django, but it 
+allowed me to learn AJAX and django in a VERY simple way.
+
+Thank you Felipe.
+
+J 

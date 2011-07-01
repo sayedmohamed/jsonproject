@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    
+        <title>JSON Response project</title>
+        <script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            $(function(){
+                $("#id_state").change(function(e){
+                    $.post(
+                        // url to post
+                        "/ajax/city/",
+                        // args
+                        {state__id:$(this).val()},
+                        // response callback
+                        function(data,text,xhrobject){
+                            // uncomment if you wanna to see objects on firebug console
+                            //console.log(data,text,xhrobject)
+                            $("#id_city").children().remove()
+                                .append("<option selected=\"selected\" value=\"\">------</option>")
+                            for (i in data) {
+                                i = data[i]
+                                $("#id_city").append(
+                                    "<option value=\""+i.id+"\">"+i.name+"</option>"
+                                )
+                            }
+
+                        })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <form action="/" method="post" accept-charset="utf-8">
+            {{ form.as_p }}
+        </form>
+    </body>
+</html>

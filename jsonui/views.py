@@ -3,18 +3,20 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-
 from models import City,State
 from forms import CityForm
 
 from utils import qdct_as_kwargs
 from response import JSONResponse
 
+from django.views.decorators.csrf import csrf_exempt
+
 def mainview(request):
 
     return render_to_response('base.html',{'form': CityForm() },
         context_instance=RequestContext(request))
 
+@csrf_exempt
 def json_get_city(request):
 
     if not request.method == "POST":
